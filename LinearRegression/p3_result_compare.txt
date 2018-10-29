@@ -1,0 +1,45 @@
+无交叉项是回归数据：
+Call:
+lm(formula = y1 ~ x1 + x2 + x3)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-339.98 -201.46  -60.09  140.93  824.75 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  726.0731    59.0114  12.304  < 2e-16 ***
+x1            -0.7537     0.1354  -5.568 5.79e-08 ***
+x2          -161.5401    22.7725  -7.094 9.66e-12 ***
+x3            61.4084    29.5658   2.077   0.0387 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 255.7 on 296 degrees of freedom
+Multiple R-squared:  0.2304,    Adjusted R-squared:  0.2226 
+F-statistic: 29.54 on 3 and 296 DF,  p-value: < 2.2e-16
+
+有交叉项时回归数据
+Call:
+lm(formula = y1 ~ x1 + I(x1 * x2) + x2 + I(x2 * x3) + x3 + I(x3 * 
+    x1))
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-364.00 -112.83   -6.44   82.22  767.18 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 1929.5308    98.5480  19.580  < 2e-16 ***
+x1            -4.7578     0.2781 -17.106  < 2e-16 ***
+I(x1 * x2)     2.5331     0.1548  16.368  < 2e-16 ***
+x2          -924.4123    55.5835 -16.631  < 2e-16 ***
+I(x2 * x3)  -137.5951    33.0684  -4.161 4.17e-05 ***
+x3           367.4941    83.5379   4.399 1.52e-05 ***
+I(x3 * x1)    -0.2866     0.1979  -1.448    0.149    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 184.1 on 293 degrees of freedom
+Multiple R-squared:  0.605,     Adjusted R-squared:  0.5969 
+F-statistic: 74.78 on 6 and 293 DF,  p-value: < 2.2e-16

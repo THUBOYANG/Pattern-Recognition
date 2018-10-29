@@ -1,0 +1,32 @@
+#这是其中一种代码，其他代码只需适当调整参数
+x<-rnorm(10,mean=0,sd=1)
+e<-rnorm(10,mean=0,sd=0.5)
+y=6+3.5*x+e
+ols1=lm(y~x)
+ols2=lm(y~x+I(x^2))
+ols3=lm(y~x+I(x^2)+I(x^3))
+summary(ols1)#得到回归数据
+summary(ols2)
+summary(ols3)
+plot(y~x)
+abline(ols1)#线性模型回归线
+z=matrix(c(x,y),10)#样本点排序（之后才能画二次、三次回归）
+t=z[order(z[,1]),]
+x=t[,1]
+y=t[,2]
+ols1=lm(y~x)
+ols2=lm(y~x+I(x^2))
+ols3=lm(y~x+I(x^2)+I(x^3))
+plot(y~x)
+lines(x,fitted(ols2))#一元二次模型回归线
+plot(y~x)
+lines(x,fitted(ols3))#一元三次模型回归线
+x0=rnorm(100,mean=0,sd=1)#以下为随机生成100个样本预测y值
+e0=rnorm(100,mean=0,sd=0.5)
+y0=6+3.5*x0+e0
+y1=3.6615*x0+5.9095
+y2=6.0837+3.5181 *x0-0.2815*x0^2
+y3=6.3065+4.6020 *x0-0.9256*x0^2-1.0693*x0^3
+t(y0-y1)%*%(y0-y1)#计算真值与预测值差的平方和
+t(y0-y2)%*%(y0-y2)
+t(y0-y3)%*%(y0-y3)

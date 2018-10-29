@@ -1,0 +1,11 @@
+x=read.table(file.choose())#读取数据x
+y=read.table(file.choose())#读取数据y
+y1=y[,1]
+x1=x[,1]
+x2=x[,2]
+x3=x[,3]
+ols1<-lm(y1~x1+x2+x3)#多元线性回归
+summary(ols1)
+ols2<-lm(y1~x1+I(x1*x2)+x2+I(x2*x3)+x3+I(x3*x1))#带交叉项的回归
+summary(ols2)
+y0=61.4084*1-161.5401*3-0.7537*110+726.0731#预测寿命
